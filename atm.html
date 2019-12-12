@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+</head>
+
+<body>
+    <input type="text" id="ip">
+    <button id="getNotes">Get Notes</button>
+    <ul id="notesList"></ul>
+    <script>
+    document.getElementById("getNotes").addEventListener("click", function(e) {
+        e.preventDefault();
+        var ip = document.querySelector("#ip").value;
+        console.log(ip);
+        document.getElementById("notesList").innerHTML = '';
+        var notesArr = [2000, 500, 200, 100, 50, 10, 2, 1];
+        var noteCount = 0;
+
+        for (let i = 0; i < notesArr.length; i++) {
+            if (ip >= notesArr[i]) {
+
+                noteCount = Math.floor(ip / notesArr[i]);
+
+                ip = Math.floor(ip % notesArr[i]);
+                let list = document.createElement("li");
+                let listItem = `${notesArr[i]} - Count is ${noteCount}`;
+                let nodeList = document.getElementById("notesList");
+                let note = document.createTextNode(listItem);
+                list.appendChild(note);
+                nodeList.appendChild(list);
+                console.log(`${notesArr[i]} - Count is ${noteCount}`);
+            }
+            else {
+                         console.log(`${notesArr[i]} - Count is 0`)
+                     }         
+        }
+
+
+        // console.log("2000 - " + noteCount[0]);
+        // console.log("500 - " + noteCount[1]);
+        // console.log("200 - " + noteCount[2]);
+        // console.log("100 - " + noteCount[3]);
+        // console.log("50 - " + noteCount[4]);
+        // console.log("10 - " + noteCount[5]);
+        // console.log("2 - " + noteCount[6]);
+        // console.log("1 - " + noteCount[7]);
+
+    });
+    </script>
+</body>
+
+</html>
